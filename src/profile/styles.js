@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   height: auto;
-  min-width: 300px;
+  min-width: 350px;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -77,12 +77,12 @@ export const InfoContainer = styled.div`
   display: flex;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   z-index: 2;
-  margin-bottom: 20px;
+  cursor: pointer;
+  user-select: none;
   :last-child {
     margin-bottom: 0;
   }
@@ -153,18 +153,12 @@ export const CheckBox = styled.div`
     cursor: pointer;
   }
 `;
-export const Line = styled.div`
+
+export const BoxContainer = styled.div`
   display: flex;
-  height: 1px;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  z-index: 3;
-  background-color: lightgray;
-  margin-bottom: 15px;
-  :last-child {
-    background-color: #fff;
-  }
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid lightgray;
 `;
 export const Box = styled.div`
   display: flex;
