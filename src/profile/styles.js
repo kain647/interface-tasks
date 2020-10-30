@@ -25,6 +25,13 @@ export const Header = styled.div`
   svg {
     cursor: pointer;
   }
+  input{
+    width: 250px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+  }
 `;
 export const HeaderContainer = styled.div`
   display: flex;
@@ -177,3 +184,7 @@ export const Box = styled.div`
   align-items: center;
   justify-content: center;
 `;
+export const InputContainer = styled.div`
+  display: ${({ isShow }) => (isShow ? "flex" : "none")};
+  
+`
