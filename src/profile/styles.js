@@ -22,6 +22,9 @@ export const Header = styled.div`
   padding: 20px 20px 0 20px;
   margin-bottom: 20px;
   color: gray;
+  svg {
+    cursor: pointer;
+  }
 `;
 export const HeaderContainer = styled.div`
   display: flex;
@@ -71,6 +74,9 @@ export const Plus = styled.div`
   right: 50px;
   bottom: -15px;
   cursor: pointer;
+  svg {
+    color: #fff;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -83,6 +89,7 @@ export const InfoContainer = styled.div`
   z-index: 2;
   cursor: pointer;
   user-select: none;
+  text-decoration: ${({ active }) => (active ? "line-through" : "none")};
   :last-child {
     margin-bottom: 0;
   }
@@ -126,6 +133,7 @@ export const TitleContainer = styled.div`
 export const Title = styled.div`
   display: flex;
   font-size: 28px;
+  margin-bottom: 5px;
 `;
 export const Subtitle = styled.div`
   display: flex;
