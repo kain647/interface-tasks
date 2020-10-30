@@ -10,7 +10,7 @@ import {
   HeaderContainer,
   ImageContainer,
   Avatar,
-  Plus,
+  //Plus,
   InfoContainer,
   TimeContainer,
   Time,
@@ -24,7 +24,8 @@ import {
   SubtitleTasks,
   CheckBox,
   Box,
-  BoxContainer
+  BoxContainer,
+  InputContainer
 } from "./styles";
 
 const Profile = props => {
@@ -126,7 +127,12 @@ const Profile = props => {
   const activeTask = taskNumber - activeNumber;
 
   //const textTask = activeTask > 1 ? "Tasks" : "Task";
-  const textTask = `Task${activeTask > 1 ? "s" : ""}`
+  const textTask = `Task${activeTask > 1 ? "s" : ""}`;
+
+  const [isShow, setIsShow] = useState(false);
+  const toggle = () => setIsShow(!isShow);
+  //console.log(toggle)
+
 
   return (
     <Container>
@@ -134,7 +140,10 @@ const Profile = props => {
         <HeaderContainer>
           <Header>
             <GoThreeBars />
-            <RiSearch2Line />
+            <InputContainer isShow={isShow}>
+              <input type="search" placeholder="Search..."  />
+            </InputContainer>
+            <RiSearch2Line onClick={toggle} />
           </Header>
           <Avatar />
           <TitleContainer>
@@ -147,9 +156,9 @@ const Profile = props => {
           </TitleContainer>
         </HeaderContainer>
         <Box>
-          <Plus>
-            <BiPlus />
-          </Plus>
+          {/*<Plus>*/}
+          {/*  <BiPlus />*/}
+          {/*</Plus>*/}
         </Box>
       </ImageContainer>
       {tasks.map(task => {
