@@ -72,41 +72,6 @@ const Profile = props => {
       photo: images[4],
       title: "Meeting a friend",
       subtitle: "Bar friends"
-    },
-    {
-      id: 6,
-      time: "24",
-      photo: images[0],
-      title: "Coffee with Adam",
-      subtitle: "Starbucks"
-    },
-    {
-      id: 7,
-      time: "35",
-      photo: images[1],
-      title: "Lunch with Kate",
-      subtitle: "Restaurant"
-    },
-    {
-      id: 8,
-      time: "60",
-      photo: images[2],
-      title: "Training",
-      subtitle: "Boxing hall"
-    },
-    {
-      id: 9,
-      time: "20",
-      photo: images[3],
-      title: "Visit doctor",
-      subtitle: "Ophthalmologist"
-    },
-    {
-      id: 10,
-      time: "120",
-      photo: images[4],
-      title: "Meeting a friend",
-      subtitle: "Bar friends"
     }
   ];
 
@@ -133,6 +98,7 @@ const Profile = props => {
   const toggle = () => setIsShow(!isShow);
   //console.log(toggle)
 
+  const [search, setSearch] = useState("");
 
   return (
     <Container>
@@ -141,7 +107,14 @@ const Profile = props => {
           <Header>
             <GoThreeBars />
             <InputContainer isShow={isShow}>
-              <input type="search" placeholder="Search..."  />
+              <input
+                type="search"
+                placeholder="Search..."
+                value={search}
+                onChange={e => {
+                  setSearch(e.target.value);
+                }}
+              />
             </InputContainer>
             <RiSearch2Line onClick={toggle} />
           </Header>
@@ -161,23 +134,30 @@ const Profile = props => {
           {/*</Plus>*/}
         </Box>
       </ImageContainer>
-      {tasks.map(task => {
-        const { time, photo, title, subtitle, id } = task;
-        const active = checked[id];
-        return (
-          <Task
-            key={id}
-            time={time}
-            photo={photo}
-            title={title}
-            subtitle={subtitle}
-            active={active || false}
-            onClick={() => {
-              handleClick(id);
-            }}
-          />
-        );
-      })}
+      {tasks
+        .filter(task => {
+          return (
+            search === "" ||
+            task.title.toLowerCase().includes(search.toLowerCase())
+          );
+        })
+        .map(task => {
+          const { time, photo, title, subtitle, id } = task;
+          const active = checked[id];
+          return (
+            <Task
+              key={id}
+              time={time}
+              photo={photo}
+              title={title}
+              subtitle={subtitle}
+              active={active || false}
+              onClick={() => {
+                handleClick(id);
+              }}
+            />
+          );
+        })}
     </Container>
   );
 };
